@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block title %}- File yo report{% endblock %}
+
+{% block content %}
+    <div class="center-block ">
+    <h2>File yo report</h2>
+    <form method="post">
+        {% for question in questions %}
+        <div class="form-group{% if question.hasError %} has-error{% endif %} }}">
+            <label class="control-label" for="answer[{{ question.id }}]">
+                {% if question.hasError %}<span class="glyphicon glyphicon-warning-sign"></span>{% endif %}
+                {{ question.question | escape }}
+            </label>
+            <textarea name="answer[{{ question.id }}]" class="form-control" rows="2">{{ question.answer | escape}}</textarea>
+            <input type="hidden" name="entry[{{ question.id }}]" value="{{ question.entry_id }}">
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
+    </div>
+{% endblock %}

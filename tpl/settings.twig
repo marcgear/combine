@@ -1,0 +1,34 @@
+{% extends "base.twig" %}
+
+
+{% block title %}- Settings{% endblock %}
+
+{% block content %}
+    <div class="center-block ">
+    <h2>Adjust your settings</h2>
+    <form method="post">
+        <div class="form-group{% if errors.name %} has-error{% endif %} }}">
+            <label class="control-label" for="name">
+                {% if errors.name %}<span class="glyphicon glyphicon-warning-sign"></span>{% endif %}
+                Your name:
+            </label>
+            <input type="text" name="name" class="form-control" value="{{ user.name | escape }}">
+        </div>
+
+        <div class="form-group{% if errors.name %} has-error{% endif %} }}">
+            <label class="control-label" for="department">
+                {% if errors.department %}<span class="glyphicon glyphicon-warning-sign"></span>{% endif %}
+                Your department:
+            </label>
+            <select name="department" class="form-control">
+                <option value="">--</option>
+                {%  for department in user.getDepartments() %}
+                <option value="{{ department }}" {% if department == user.department %}selected{% endif %}>{{ department | escape }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
+    </div>
+{% endblock %}

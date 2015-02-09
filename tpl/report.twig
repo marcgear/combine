@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+
+
+{% block title %}- Report for {{ date | date('j M')}}{% endblock %}
+
+{% block content %}
+<div class="report">
+    {%  if questions | length > 0 %}
+    <h2>Report for {{ date | date('j M') }}</h2>
+
+
+    {% for question in questions %}
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ question.question }}</div>
+            <table class="table table-striped">
+            {%  for entry in question.entries %}
+            <tr>
+                <td class="name">{% if entry.name %}{{ entry.name }}{% else %}{{ entry.username }}{% endif %}</td>
+                <td>{{ entry.department}}</td>
+                <td>{{ entry.response | nl2br }}</td>
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+    {% endfor %}
+    {%  else %}
+        <div class="alert alert-danger">
+            <span class="glyphicon glyphicon-warning-sign"></span>
+            <strong>Oh noes! - </strong> No report for {{ date | date('j M') }}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

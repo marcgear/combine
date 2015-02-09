@@ -1,0 +1,32 @@
+{% extends "base.twig" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Combine</h1>
+<p class="lead">
+    <em>verb</em> /kəmˈbʌɪn/ : To unite for a common purpose.
+</p>
+<p class="lead"><span class="lead" id="timer"></span> {% if hasSubmitted %}until report available{% else %}to file your report{% endif %}</p>
+<p>
+    <a href="/file" class="btn {% if hasSubmitted %}btn-default{% else %}btn-success{% endif %} btn-lg" role="button">{% if hasSubmitted %}Amend{% else %}File{% endif %} report</a>
+    <a href="/reports/latest" class="btn btn-info btn-lg" role="button">Latest report</a>
+</p>
+{% endblock %}
+
+{% block scripts %}
+    {{ parent() }}
+    <script src="/js/countdown.min.js"></script>
+    <script>
+    $(document).ready(function() {
+    var timerId = countdown(
+        new Date({{ nextCutoff }} * 1000),
+        function(ts) {
+            document.getElementById('timer').innerHTML = ts.toHTML("strong");
+        },
+        countdown.DAYS|countdown.HOURS|countdown.MINUTES
+    );
+    });
+    </script>
+
+{% endblock %}

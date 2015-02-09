@@ -1,0 +1,33 @@
+{% extends "index.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h1>Combine</h1>
+    <p class="lead">
+        <em>verb</em> /kəmˈbʌɪn/ : To unite for a common purpose.
+    </p>
+    <p class="lead"><span class="lead" id="timer"></span> to file your report</p>
+    <div class="col-md-offset-2">
+        <form role="form" action="{{ path('login_check') }}" method="post" class="form-horizontal">
+        <div class="form-group">
+            <label for="username" class="col-sm-2 control-label">User</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="username" name="_username" value="{{ lastUsername }}" autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-7">
+                <input type="password" class="form-control" id="password" name="_password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </div>
+        </div>
+        </form>
+    </div>
+
+{% endblock %}

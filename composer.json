@@ -1,0 +1,24 @@
+{
+    "name": "marc/combine",
+    "authors": [
+        {
+            "name": "Marc Gear",
+            "email": "marcgear@gmail.com"
+        }
+    ],
+    "require": {
+        "silex/silex": "~1.1",
+        "twig/twig": ">=1.8,<2.0-dev",
+        "symfony/twig-bridge": "~2.3",
+        "swiftmailer/swiftmailer": ">=4.1.2,<4.2-dev",
+        "doctrine/dbal": "2.2.*",
+        "symfony/security": "~2.3",
+        "fr3d/ldap-bundle": "2.0.*@dev",
+        "monolog/monolog": ">=1.0.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Combine": "lib/"
+        }
+    }
+}
